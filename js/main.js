@@ -1,11 +1,12 @@
 class Player{
-    constructor(name, order, wallet, bet, rolledHand, heldHand, inTheDoor, score){
+    constructor(name, order, wallet, bet, rolledHand, heldHand, activeDice, inTheDoor, score){
         this._name = name
         this.order = order
         this.wallet = wallet
         this.bet = bet
         this.rolledHand = rolledHand
         this.heldHand = heldHand
+        this.activeDice = activeDice
         this.inTheDoor = inTheDoor
         this.score = score
     }
@@ -24,10 +25,20 @@ class Player{
         return this.rolledHand
     }
     hold(holdThisDie){
-        
-        this.heldHand = this.rolledHand.slice(holdThisDie)
 
-        console.log(`${this._name} holds ${this.heldHand} this turn.`)
+        let heldDie = this.rolledHand[holdThisDie]
+        console.log(heldDie)
+
+        let heldArray = []
+
+        heldArray.push(heldDie)
+
+        this.heldHand = heldArray
+        
+        //this.heldHand = this.rolledHand.map(element => element.indexOf === holdThisDie)
+
+         console.log(`${this._name} holds ${this.heldHand} this turn.`)
+         return this.heldHand
     }
     endTurn(){
         console.log(`${this._name} ends their turn.  They are ${this.inTheDoor}, with a score of ${this.score}.`)
@@ -37,4 +48,3 @@ class Player{
 const garrett = new Player('Garrett', 1, 100, 0, [], [], false, 0)
 
 garrett.roll()
-
