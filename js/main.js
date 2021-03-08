@@ -1,4 +1,6 @@
 class Player{
+
+
     constructor(name, order, wallet, bet, rolledHand, heldHand, activeDice, inTheDoor, score){
         this._name = name
         this.order = order
@@ -10,6 +12,8 @@ class Player{
         this.inTheDoor = inTheDoor
         this.score = score
     }
+
+
     roll(){
         let d1 = Math.floor(Math.random() * 6) + 1
         let d2 = Math.floor(Math.random() * 6) + 1
@@ -19,11 +23,14 @@ class Player{
         let d6 = Math.floor(Math.random() * 6) + 1
 
         let rollArray = [d1, d2, d3, d4, d5, d6]
+        
         this.rolledHand = rollArray
         console.log(`${this._name} rolls ${this.rolledHand}.`)
 
         return this.rolledHand
     }
+
+
     hold(holdThisDie){
 
         let heldDie = this.rolledHand[holdThisDie]
@@ -39,7 +46,10 @@ class Player{
 
          console.log(`${this._name} holds ${this.heldHand} this turn.`)
          return this.heldHand
+         
     }
+
+
     endTurn(){
         console.log(`${this._name} ends their turn.  They are ${this.inTheDoor}, with a score of ${this.score}.`)
     }
